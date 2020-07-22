@@ -1,0 +1,1 @@
+# python generate_tfrecord.py --label=Kayak --csv_input=/home/tristan/Tensorflow/workspace/training_demo/annotations/test_labels.csv --output_path=/home/tristan/Tensorflow/workspace/training_demo/annotations/test.record --img_path=/home/tristan/Tensorflow/workspace/training_demo/images/test
