@@ -1,1 +1,1 @@
-# python generate_tfrecord.py --label=Kayak --csv_input=/home/tristan/Tensorflow/workspace/training_demo/annotations/train_labels.csv --output_path=/home/tristan/Tensorflow/workspace/training_demo/annotations/train.record --img_path=/home/tristan/Tensorflow/workspace/training_demo/images/train
+python generate_tfrecord.py --label=Kayak --csv_input=../../workspace/training_demo/annotations/train_labels.csv --output_path=../../workspace/training_demo/annotations/train.record --img_path=../../workspace/training_demo/images/train
