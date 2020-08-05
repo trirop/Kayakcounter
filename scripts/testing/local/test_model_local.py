@@ -21,6 +21,17 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import sys
+#import tkinter
+import matplotlib
+import time
+#matplotlib.use('Qt5Agg')
+#matplotlib.use('TkAgg')
+#matplotlib.use('WebAgg')
+import matplotlib.pyplot as plt
+#matplotlib.use('qt5agg')
+import csv
+
+#matplotlib.use('TKAgg',warn=False, force=True)
 
 # This is needed since the notebook is stored in the object_detection folder.
 sys.path.append("..")
@@ -31,7 +42,9 @@ from object_detection.utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'trained_inference_graph'
-IMAGE_NAME = 'image7.jpg'
+IMAGE = 'image13'
+IMAGE_NAME = IMAGE + '.jpg'
+IMAGE_RESULT_NAME = IMAGE + '_result.jpg'
 
 # Grab path to current working directory
 #CWD_PATH = os.getcwd()
@@ -48,7 +61,10 @@ PATH_TO_LABELS = os.path.join(CWD_PATH,'training','label_map.pbtxt')
 PATH_TO_IMAGE = os.path.join('/home/tristan/Kayakcounter/workspace/training_demo/test_images',IMAGE_NAME)
 
 # Number of classes the object detector can identify
-NUM_CLASSES = 1
+NUM_CLASSES = 3
+LIMIT = 0.9
+
+f = open('result_isar.csv', 'w')
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -57,7 +73,16 @@ NUM_CLASSES = 1
 # dictionary mapping integers to appropriate string labels would be fine
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
+print("Categories[0]=",categories[0])
+
 category_index = label_map_util.create_category_index(categories)
+print("category_index=", category_index)
+
+print("1.Class = ",category_index.get(1).get('name'))
+print("2.Class = ",category_index.get(2).get('name'))
+print("3.Class = ",category_index.get(3).get('name'))
+
+#print [category_index.get(value) for index,value in enumerate(classes[0]) if scores[0,index] > 0.5]
 
 # Load the Tensorflow model into memory.
 detection_graph = tf.Graph()
@@ -109,12 +134,27 @@ final_score = np.squeeze(scores)
 final_classes = np.squeeze(classes)
 count = 0
 for i in range(100):
-	if scores is None or final_score[i] > 0.9:
+	if scores is None or final_score[i] > LIMIT:
+		print("I = ", i)
 		print("Class = ",final_classes[i])
 		print("Score = ",final_score[i])
 		count = count + 1
 
 print("Found objects = ", count)
+if count > 0:
+	localtime = time.localtime()
+	result = time.strftime("%I:%M:%S %p", localtime)
+	with f:
+		fnames = ['Time', 'Class', 'Score']
+		writer = csv.DictWriter(f, fieldnames=fnames)
+		writer.writeheader()
+		j=0
+		while j < count:
+			writer.writerow({'Time' : result, 
+					'Class': category_index.get(final_classes[j]).get('name'), 
+					'Score' : final_score[j] })
+			j=j+1
+
 # Draw the results of the detection (aka 'visulaize the results')
 
 vis_util.visualize_boxes_and_labels_on_image_array(
@@ -125,10 +165,19 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     category_index,
     use_normalized_coordinates=True,
     line_thickness=8,
-    min_score_thresh=0.9)
+    min_score_thresh=LIMIT)
 
 # All the results have been drawn on image. Now display the image.
+cv2.imwrite('image_result.jpg', image)
+time.sleep(3)
 cv2.imshow('Object detector', image)
+time.sleep(3)
+
+#matplotlib.use('TkAgg')
+#plt.figure()
+#plt.imshow(image)
+#plt.show()
+
 
 # Press any key to close the image
 cv2.waitKey(0)
