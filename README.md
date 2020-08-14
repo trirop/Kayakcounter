@@ -19,6 +19,9 @@ conda activate Kayakcounter
 <p align="center">
   <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
 </p>
+
+## Testing
+[Scripts for testing](scripts/Readme.md)
 ## Usage
 
 ## Contributing
