@@ -21,7 +21,7 @@ conda activate Kayakcounter
 </p>
 
 ## Testing
-[Scripts for testing](./scripts/Readme.md)
+[Scripts for testing](../scripts/Readme.md)
 ## Usage
 
 ## Contributing
