@@ -2,12 +2,13 @@
 # idle
 import tensorflow as tf
 import cv2
-import time
 import numpy as np
 import os
 import sys
 import matplotlib
 import csv
+import datetime
+import time
 
 # This is needed since the notebook is stored in the object_detection folder.
 sys.path.append("..")
@@ -15,9 +16,10 @@ sys.path.append("..")
 # Import utilites
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
+LOG_PATH = 'webcam_results/'
 
 MODEL_NAME = 'trained_inference_graph'
-CWD_PATH = "/home/tristan/Kayakcounter/workspace/training_demo/"
+CWD_PATH = "../../../workspace/training_demo/"
 NUM_CLASSES = 3
 LIMIT = 0.5
 
@@ -56,8 +58,9 @@ capture.set(4, 480)
 img_counter = 0
 frame_set = []
 start_time = time.time()
+CSV_FILENAME = 'webcam_results/result_webcam.csv'
 
-with open('result_webcam.csv', 'w', newline='') as f:
+with open(CSV_FILENAME, 'w', newline='') as f:
     fnames = ['Time', 'Class', 'Score']
     writer = csv.DictWriter(f, fieldnames=fnames)
     writer.writeheader()
@@ -87,19 +90,15 @@ with open('result_webcam.csv', 'w', newline='') as f:
 
                     if count > 0:
                         # Bild abspeichern
-                        localtime = time.localtime()
-                        result = time.strftime("%I:%M:%S %p", localtime)
-                        filename = result + "orig_image.jpg"
-                        print("Akuelle Zeit=", result)
+                        now=datetime.datetime.today()
+                        
+                        filename = LOG_PATH + now.strftime('%Y-%m-%d_%H%M%S') + "_orig_image.jpg"
+                        print("Akuelle Zeit=", now.strftime('%Y-%m-%d_%H%M%S'))
                         print("Orig Filename=", filename)
                         j = 0
                         while j < count:
-                            rowcontent = [result, category_index.get(
-                                final_classes[j]).get('name'), final_score[j]]
 
-                            print("Rowcontent = ", rowcontent)
-
-                            writer.writerow({'Time': result, 'Class': category_index.get(
+                            writer.writerow({'Time': now.strftime('%Y-%m-%d_%H%M%S'), 'Class': category_index.get(
                                 final_classes[j]).get('name'), 'Score': final_score[j]})
 
                             j = j+1
@@ -112,6 +111,7 @@ with open('result_webcam.csv', 'w', newline='') as f:
                                 use_normalized_coordinates=True,
                                 line_thickness=8,
                                 min_score_thresh=LIMIT)
+                            print('Saved image=',filename)
                             cv2.imwrite(filename, image)
                             cv2.imshow('frame', image)
 
