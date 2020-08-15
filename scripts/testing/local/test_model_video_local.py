@@ -1,12 +1,13 @@
-# autopep8 -i test_video.py
+# autopep8 -i test_model_video_local.py
+# idle
 import numpy as np
 import cv2
 import os
-import numpy as np
 import tensorflow as tf
 import sys
 import matplotlib
 import time
+import datetime
 import csv
 
 # This is needed since the notebook is stored in the object_detection folder.
@@ -15,11 +16,12 @@ sys.path.append("..")
 # Import utilites
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
+LOG_PATH = 'video_results/'
 
 MODEL_NAME = 'trained_inference_graph'
-CWD_PATH = "/home/tristan/Kayakcounter/workspace/training_demo/"
+CWD_PATH = "../../../workspace/training_demo/"
 NUM_CLASSES = 3
-LIMIT = 0.5
+LIMIT = 0.85
 
 # Path to frozen detection graph .pb file, which contains the model that is used
 # for object detection.
@@ -31,7 +33,7 @@ PATH_TO_LABELS = os.path.join(CWD_PATH, 'training', 'label_map.pbtxt')
 # Path to image
 VIDEO_NAME = '20190803_Bootszählung_Isar.AVI'
 PATH_TO_VIDEO = os.path.join(
-    '/home/tristan/Kayakcounter/workspace/training_demo/test_videos/', VIDEO_NAME)
+    '../../../workspace/training_demo/test_videos/', VIDEO_NAME)
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(
@@ -54,14 +56,13 @@ detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
 detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
 num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
-print(VIDEO_NAME)
-with open('result_isar.csv', 'w', newline='') as f:
+CSV_FILENAME = 'video_results/result_video.csv'
+with open(CSV_FILENAME, 'a+', newline='') as f:
     fnames = ['Time', 'Class', 'Score']
     writer = csv.DictWriter(f, fieldnames=fnames)
     writer.writeheader()
 
     cap = cv2.VideoCapture(PATH_TO_VIDEO)
-    print('This is the start:')
 
     while(cap.isOpened()):
         ret, image = cap.read()
@@ -75,6 +76,7 @@ with open('result_isar.csv', 'w', newline='') as f:
         final_score = np.squeeze(scores)
         final_classes = np.squeeze(classes)
         count = 0
+
         for i in range(100):
             if scores is None or final_score[i] > LIMIT:
                 print("Number = ", i)
@@ -84,12 +86,11 @@ with open('result_isar.csv', 'w', newline='') as f:
 
                 if count > 0:
                     # Bild abspeichern
-                    localtime = time.localtime()
-                    result = time.strftime("%I:%M:%S %p", localtime)
-                    filename = result + "orig_image.jpg"
-                    print("Akuelle Zeit=", result)
-                    print("Orig Filename=", filename)
-                    cv2.imwrite(filename, image)
+                    now = datetime.datetime.today()
+                    filename = LOG_PATH + \
+                        now.strftime('%Y-%m-%d_%H:%M:%S') + "_orig_image.jpg"
+                    print("Current time=", now.strftime('%Y-%m-%d_%H:%M;%S'))
+                    print("Origiginal Filename=", filename)
 
                     j = 0
                     while j < count:
@@ -102,29 +103,21 @@ with open('result_isar.csv', 'w', newline='') as f:
                             final_classes[j]).get('name'), 'Score': final_score[j]})
 
                         j = j+1
-                #count = 0
-                #j = 0
-                #i = 0
-            vis_util.visualize_boxes_and_labels_on_image_array(
-                image,
-                np.squeeze(boxes),
-                np.squeeze(classes).astype(np.int32),
-                np.squeeze(scores),
-                category_index,
-                use_normalized_coordinates=True,
-                line_thickness=8,
-                min_score_thresh=LIMIT)
-            if count > 0:
-                filename = result + "updated_image.jpg"
-                print("Updated Filename=", filename)
+                vis_util.visualize_boxes_and_labels_on_image_array(
+                    image,
+                    np.squeeze(boxes),
+                    np.squeeze(classes).astype(np.int32),
+                    np.squeeze(scores),
+                    category_index,
+                    use_normalized_coordinates=True,
+                    line_thickness=8,
+                    min_score_thresh=LIMIT)
                 cv2.imwrite(filename, image)
 
             cv2.imshow('frame', image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
-    print('This is the end:')
     cap.release()
     cv2.destroyAllWindows()
-# writer.close()
-# f.close()
+f.close()

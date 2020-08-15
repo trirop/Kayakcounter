@@ -60,7 +60,7 @@ frame_set = []
 start_time = time.time()
 CSV_FILENAME = 'webcam_results/result_webcam.csv'
 
-with open(CSV_FILENAME, 'w', newline='') as f:
+with open(CSV_FILENAME, 'a+', newline='') as f:
     fnames = ['Time', 'Class', 'Score']
     writer = csv.DictWriter(f, fieldnames=fnames)
     writer.writeheader()
@@ -91,9 +91,8 @@ with open(CSV_FILENAME, 'w', newline='') as f:
                     if count > 0:
                         # Bild abspeichern
                         now=datetime.datetime.today()
-                        
-                        filename = LOG_PATH + now.strftime('%Y-%m-%d_%H%M%S') + "_orig_image.jpg"
-                        print("Akuelle Zeit=", now.strftime('%Y-%m-%d_%H%M%S'))
+                        filename = LOG_PATH + now.strftime('%Y-%m-%d_%H:%M:%S') + "_orig_image.jpg"
+                        print("Akuelle Zeit=", now.strftime('%Y-%m-%d_%H:%M;%S'))
                         print("Orig Filename=", filename)
                         j = 0
                         while j < count:
