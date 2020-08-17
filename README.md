@@ -17,7 +17,11 @@ Create a virtual environment for a special user, for instance user Kayakcounter
 ```
 conda create -n Kayakcounter python=3.7
 ```
-Then install the necessary Python software libraries
+Then activate this new conda environment with:
+```
+conda activate Kayakcounter
+```
+Install the necessary Python software libraries
 
 ```
 conda install tensorflow==1.15
@@ -36,12 +40,20 @@ pip3 install -r requirements.txt
 For installing the needed software libraries please check
 [Medium](https://choosealicense.com/licenses/mit/)
 
-```
-conda activate Kayakcounter
-```
 <p align="center">
   <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
 </p>
+
+<p align="center">
+  <img src="/docs/Rubberboat.jpg" width="350" alt="accessibility text">
+</p>
+
+<p align="center">
+  <img src="/docs/Standuppaddler.jpg" width="350" alt="accessibility text">
+</p>
+
+## Preparing the dataset for the Kayakcounter
+
 
 ## Testing
 [Scripts for testing](/scripts/testing/Readme.md)
