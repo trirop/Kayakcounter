@@ -5,8 +5,15 @@
 
 ## Preliminar words
 In the past sportif paddlers and whitewater kayakers were threaten by legal limitations of the offical authorithies by imposing driving bans on certain river sections in Bavaria, Germany due to nature conservation grounds.
-The sports organization BKV (Bayerischer Kanuverband) [BKV](https://www.kanu-bayern.de/) tried to argue with this detailed figures the authorities in Bavara, that the organized sportif paddlers and whitewater kayakers are not the root cause of the nature conservation problems.
-This was the reason to the devlop this software "Kayacounter" to check the different types of boats on a river section and count them in a CSV file. The software itself was developed with the help of Python 3.7, Tensorflow 1.15, Opencv 3.5 and Matplotlib.
+The sports organization [BKV](https://www.kanu-bayern.de/) (Bayerischer Kanu Verband) and [CMK](https://www.cmk-muenchen.de) (Club Münchener Kayakfahrer e.V.) tried to argue with these detailed figures to the authorities in Bavaria, that the organized sportif paddlers and whitewater kayakers are not the root cause of the nature conservation problems.
+This was the reason to the develop this software "Kayacounter" to check the different types of boats on a river section and count the results in a CSV file. 
+
+The software itself was developed with the help of Python 3.7, Tensorflow 1.15, Opencv 3.5 and Matplotlib. 
+
+The neuronal net of the Kayakcounter can distiguish three types of boates: 
+1. Kayak
+2. Rubber boat
+3. Standup paddler
 
 ## Setting-up a working Python environment
 Download and install Anaconda (Python 3.7 for Linux Ubuntu 18.04 in my case) from:

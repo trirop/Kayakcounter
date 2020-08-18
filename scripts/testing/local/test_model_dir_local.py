@@ -5,17 +5,11 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import sys
-#import tkinter
 import matplotlib
 import time
-# matplotlib.use('Qt5Agg')
-# matplotlib.use('TkAgg')
-# matplotlib.use('WebAgg')
-import matplotlib.pyplot as plt
-# matplotlib.use('qt5agg')
+import datetime
 import csv
 
-#matplotlib.use('TKAgg',warn=False, force=True)
 
 # This is needed since the notebook is stored in the object_detection folder.
 sys.path.append("..")
@@ -26,7 +20,6 @@ from object_detection.utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'trained_inference_graph'
-
 
 # Grab path to current working directory
 #CWD_PATH = os.getcwd()
@@ -41,7 +34,9 @@ PATH_TO_LABELS = os.path.join(CWD_PATH, 'training', 'label_map.pbtxt')
 
 # Number of classes the object detector can identify
 NUM_CLASSES = 3
-LIMIT = 0.2
+LIMIT = 0.85
+IMAGE_PATH = "../../../workspace/training_demo/test_images/"
+CSV_FILENAME = 'dir_results/result_webcam.csv'
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -56,14 +51,9 @@ categories = label_map_util.convert_label_map_to_categories(
 
 category_index = label_map_util.create_category_index(categories)
 print("category_index=", category_index)
-
-#print("Length of category index=", category_index.length)
-
 print("1.Class = ", category_index.get(1).get('name'))
 print("2.Class = ", category_index.get(2).get('name'))
 print("3.Class = ", category_index.get(3).get('name'))
-
-#print [category_index.get(value) for index,value in enumerate(classes[0]) if scores[0,index] > 0.5]
 
 # Load the Tensorflow model into memory.
 detection_graph = tf.Graph()
@@ -97,17 +87,17 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 # Load image using OpenCV and
 # expand image dimensions to have shape: [1, None, None, 3]
 
-path = "../../../workspace/training_demo/test_images/"
-
-with open('dir_results/result_isar.csv', 'a+', newline='') as f:
+with open(CSV_FILENAME, 'a+', newline='') as f:
         fnames = ['Image', 'Time', 'Class', 'Score']
         writer = csv.DictWriter(f, fieldnames=fnames)
         writer.writeheader()
 
-        for filename in os.listdir(path):
+        for filename in os.listdir(IMAGE_PATH):
 
-                PATH_TO_IMAGE = os.path.join('../../../workspace/training_demo/test_images', filename)
-                #print("Current Filename=", PATH_TO_IMAGE)
+                PATH_TO_IMAGE = os.path.join(IMAGE_PATH, filename)
+                
+                print("Current Filename=", PATH_TO_IMAGE)
+
                 image = cv2.imread(PATH_TO_IMAGE)
                 image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 image_expanded = np.expand_dims(image_rgb, axis=0)
@@ -131,27 +121,21 @@ with open('dir_results/result_isar.csv', 'a+', newline='') as f:
                                count = count + 1
 
                 print("Found objects in image= ", count)
-                localtime = time.localtime()
-                result = time.strftime("%I:%M:%S %p", localtime)
-                filename_update = "dir_results/" + filename + '_' + result + "_orig_image.jpg"
-                #print("Akuelle Zeit=", result)
+                now=datetime.datetime.today()
+                filename_update = "dir_results/" + filename + '_' + now.strftime('%Y-%m-%d_%H:%M:%S') + "_orig_image.jpg"
+
                 print("Updated Filename=", filename_update)
-
-
-                #if count > 0:
-                # Bild abspeichern
-                        # cv2.imwrite(filename, image)
 
                 j = 0
                 while j < count:
-                        writer.writerow({'Image': filename, 'Time': result, 
+                        writer.writerow({'Image': filename, 'Time': now.strftime('%Y-%m-%d_%H:%M:%S'), 
                                         'Class': category_index.get(final_classes[j]).get('name'), 
                                         'Score': final_score[j]})
 
                         j=j+1
 
                 if count == 0:
-                        writer.writerow({'Image': filename, 'Time': result,'Class': 'None', 'Score': 0})
+                        writer.writerow({'Image': filename, 'Time': now.strftime('%Y-%m-%d_%H:%M:%S'),'Class': 'None', 'Score': 0})
         
                 vis_util.visualize_boxes_and_labels_on_image_array(
                 image,
@@ -165,20 +149,14 @@ with open('dir_results/result_isar.csv', 'a+', newline='') as f:
 
                 if count > 0:
                         cv2.imwrite(filename_update, image)
+                #cv2.startWindowThread()
+                #cv2.namedWindow("Object detector")
                 cv2.imshow('Object detector', image)
-                time.sleep(10)
-                cv2.destroyWindow('Object detector')
+                cv2.waitKey(0)
+                #time.sleep(5)
+                #cv2.destroyWindow('Object detector')
 
-                # matplotlib.use('TkAgg')
-                # plt.figure()
-                # plt.imshow(image)
-                # plt.show()
-                # plt.close('all')
-                # time.sleep(3)
-
-
-                # Press any key to close the image
-                #cv2.waitKey(0)
 
                 # Clean up
-        cv2.destroyAllWindows()
+cv2.destroyAllWindows()
+f.close()

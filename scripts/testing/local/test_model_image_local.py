@@ -1,37 +1,15 @@
-######## Image Object Detection Using Tensorflow-trained Classifier #########
-#
-# Author: Evan Juras
-# Date: 1/15/18
-# Description: 
-# This program uses a TensorFlow-trained neural network to perform object detection.
-# It loads the classifier and uses it to perform object detection on an image.
-# It draws boxes, scores, and labels around the objects of interest in the image.
-
-## Some of the code is copied from Google's example at
-## https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb
-
-## and some is copied from Dat Tran's example at
-## https://github.com/datitran/object_detector_app/blob/master/object_detection_app.py
-
-## but I changed it to make it more understandable to me.
-
 # Import packages
 import os
 import cv2
 import numpy as np
 import tensorflow as tf
 import sys
-#import tkinter
 import matplotlib
 import time
-#matplotlib.use('Qt5Agg')
-#matplotlib.use('TkAgg')
-#matplotlib.use('WebAgg')
-import matplotlib.pyplot as plt
-#matplotlib.use('qt5agg')
 import csv
-
-#matplotlib.use('TKAgg',warn=False, force=True)
+import datetime
+from pydub import AudioSegment
+from pydub.playback import play
 
 # This is needed since the notebook is stored in the object_detection folder.
 sys.path.append("..")
@@ -42,18 +20,12 @@ from object_detection.utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'trained_inference_graph'
-IMAGE = 'image26'
+IMAGE = 'image5'
 IMAGE_NAME = IMAGE + '.jpg'
-IMAGE_RESULT_NAME = IMAGE + '_result.jpg'
-
-VIDEO='20190804_Bootszählung_Isar'
-VIDEO_NAME= VIDEO + '.avi'
-VIDEO_RESULT_NAME = VIDEO + '_result.avi'
-
 
 # Grab path to current working directory
 #CWD_PATH = os.getcwd()
-CWD_PATH = "/home/tristan/Kayakcounter/workspace/training_demo/"
+CWD_PATH = "../../..//workspace/training_demo/"
 
 # Path to frozen detection graph .pb file, which contains the model that is used
 # for object detection.
@@ -63,13 +35,15 @@ PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,'frozen_inference_graph.pb')
 PATH_TO_LABELS = os.path.join(CWD_PATH,'training','label_map.pbtxt')
 
 # Path to image
-PATH_TO_IMAGE = os.path.join('/home/tristan/Kayakcounter/workspace/training_demo/test_images',IMAGE_NAME)
+PATH_TO_IMAGE = os.path.join('../../../workspace/training_demo/test_images',IMAGE_NAME)
 
 # Number of classes the object detector can identify
 NUM_CLASSES = 3
-LIMIT = 0.9
+LIMIT = 0.8
+IMAGE_PATH = "../../../workspace/training_demo/test_images/"
+CSV_FILENAME = 'image_results/result_image.csv'
 
-f = open('result_isar.csv', 'w')
+f = open(CSV_FILENAME, 'w')
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -78,8 +52,6 @@ f = open('result_isar.csv', 'w')
 # dictionary mapping integers to appropriate string labels would be fine
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=NUM_CLASSES, use_display_name=True)
-#print("Categories[0]=",categories[0])
-#print("Size=",categories.length)
 
 category_index = label_map_util.create_category_index(categories)
 print("category_index=", category_index)
@@ -142,26 +114,25 @@ final_score = np.squeeze(scores)
 final_classes = np.squeeze(classes)
 count = 0
 for i in range(100):
-	if scores is None or final_score[i] > LIMIT:
-		print("I = ", i)
-		print("Class = ",final_classes[i])
-		print("Score = ",final_score[i])
-		count = count + 1
+        if scores is None or final_score[i] > LIMIT:
+                print("Number of detected object = ", i)
+                print("Class = ",final_classes[i])
+                print("Score = ",final_score[i])
+                count = count + 1
 
 print("Found objects = ", count)
 if count > 0:
-	localtime = time.localtime()
-	result = time.strftime("%I:%M:%S %p", localtime)
-	with f:
-		fnames = ['Time', 'Class', 'Score']
-		writer = csv.DictWriter(f, fieldnames=fnames)
-		writer.writeheader()
-		j=0
-		while j < count:
-			writer.writerow({'Time' : result, 
-					'Class': category_index.get(final_classes[j]).get('name'), 
-					'Score' : final_score[j] })
-			j=j+1
+        with f:
+                now=datetime.datetime.today()
+                fnames = ['Time', 'Class', 'Score']
+                writer = csv.DictWriter(f, fieldnames=fnames)
+                writer.writeheader()
+                j=0
+                while j < count:
+                        writer.writerow({'Time' : now.strftime('%Y-%m-%d_%H:%M:%S') , 
+                                        'Class': category_index.get(final_classes[j]).get('name'), 
+                                        'Score' : final_score[j] })
+                        j=j+1
 
 # Draw the results of the detection (aka 'visulaize the results')
 
@@ -176,15 +147,15 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     min_score_thresh=LIMIT)
 
 # All the results have been drawn on image. Now display the image.
-cv2.imwrite('image_result.jpg', image)
-time.sleep(3)
-cv2.imshow('Object detector', image)
-time.sleep(3)
+if count > 0:
+  song = AudioSegment.from_wav("sound.wav")
+  play(song)
 
-#matplotlib.use('TkAgg')
-#plt.figure()
-#plt.imshow(image)
-#plt.show()
+
+filename_update = "image_results/" + IMAGE + '_' + now.strftime('%Y-%m-%d_%H:%M:%S') + ".jpg"
+print(filename_update)
+cv2.imwrite(filename_update, image)
+cv2.imshow('Object detector', image)
 
 
 # Press any key to close the image
