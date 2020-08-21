@@ -67,9 +67,8 @@ For installing the needed software libraries please check
 ## Usage
 
 ## Contributing und Downloading links
-[Images](https://drive.google.com/file/d/1zuxL50qTbJ0nLWU1Cfw0xsFmCli18ZQV/view?usp=sharing)
-[
-[Inference Graph](https://drive.google.com/file/d/1Ck2XczZKoKdqOwSpJ0Le021tEmZanATq/view?usp=sharing)
+[Images](https://drive.google.com/file/d/1zuxL50qTbJ0nLWU1Cfw0xsFmCli18ZQV/view?usp=sharing)  
+[Inference Graph](https://drive.google.com/file/d/1Ck2XczZKoKdqOwSpJ0Le021tEmZanATq/view?usp=sharing)  
 [Tflite](https://drive.google.com/file/d/1CmEBkx7-_xB0xn-ogYyWlho1nd735wmI/view?usp=sharing)
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
