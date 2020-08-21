@@ -69,7 +69,8 @@ For installing the needed software libraries please check
 ## Contributing und Downloading links
 [Images](https://drive.google.com/file/d/1zuxL50qTbJ0nLWU1Cfw0xsFmCli18ZQV/view?usp=sharing)  
 [Inference Graph](https://drive.google.com/file/d/1Ck2XczZKoKdqOwSpJ0Le021tEmZanATq/view?usp=sharing)  
-[Tflite](https://drive.google.com/file/d/1CmEBkx7-_xB0xn-ogYyWlho1nd735wmI/view?usp=sharing)
+[Tflite sources](https://drive.google.com/file/d/1CmEBkx7-_xB0xn-ogYyWlho1nd735wmI/view?usp=sharing)  
+[Tflite file](https://drive.google.com/file/d/1SlUIGP3VpfPqffZj16xFp8Geq51kigWL/view?usp=sharing)
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 [BKV](https://www.kanu-bayern.de/)
