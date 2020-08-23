@@ -1,0 +1,3 @@
+0 Kayak
+1 Rubberboat
+2 Standuppaddler
