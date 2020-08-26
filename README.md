@@ -4,7 +4,7 @@
 [comment]: https://medium.com/analytics-vidhya/how-to-set-up-tensorflow-gpu-on-ubuntu-18-04-lts-7a09ffd5f30f
 
 ## Preliminar words
-In the past sportif paddlers and whitewater kayakers were threaten by legal limitations of the offical authorithies by imposing driving bans on certain river sections in Bavaria, Germany due to nature conservation grounds.
+In the past sportif paddlers and whitewater kayakers were threaten by legal limitations of the offical authorithies by imposing driving bans on certain river sections in Bavaria, Germany, due to nature conservation grounds.  
 The sports organization [BKV](https://www.kanu-bayern.de/) (Bayerischer Kanu Verband) and [CMK](https://www.cmk-muenchen.de) (Club Münchener Kayakfahrer e.V.) tried to argue with these detailed figures to the authorities in Bavaria, that the organized sportif paddlers and whitewater kayakers are not the root cause of the nature conservation problems.
 This was the reason to the develop this software "Kayacounter" to check the different types of boats on a river section and count the results in a CSV file. 
 
@@ -66,6 +66,10 @@ For installing the needed software libraries please check
 
 ## Preparing the dataset for the Kayakcounter
 
+## Training of the Kayakcounter
+<p align="center">
+  <img src="/docs/compile-workflow.png" width="350" alt="accessibility text">
+</p>
 
 ## Testing
 [Scripts for testing](/scripts/testing/Readme.md)
