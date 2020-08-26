@@ -46,8 +46,9 @@ pip3 install -r requirements.txt
 
 ### Setup and installation of the needed software requirements and prerequisites 
 For installing the needed software libraries please check
-[Medium](https://choosealicense.com/licenses/mit/)
+[Medium](https://choosealicense.com/licenses/mit/)  
 
+Output of the Kayacounter trained inference graph (frozen.pb):
 <p align="center">
   <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
 </p>
@@ -63,11 +64,8 @@ For installing the needed software libraries please check
 <p align="center">
   <img src="/docs/Kayak.png" width="350" alt="accessibility text">
 </p>
-Output of the Kayacounter trained inference graph (frozen.pb):
-<p align="center">
-  <img src="/docs/Kayak.png" width="350" alt="accessibility text">
-</p>
-Output of the Kayaccounter tflite model
+
+Output of the Kayaccounter tflite model:
 <p align="center">
   <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
 </p>
