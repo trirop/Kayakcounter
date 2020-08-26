@@ -63,6 +63,14 @@ For installing the needed software libraries please check
 <p align="center">
   <img src="/docs/Kayak.png" width="350" alt="accessibility text">
 </p>
+Output of the Kayacounter trained inference graph (frozen.pb):
+<p align="center">
+  <img src="/docs/Kayak.png" width="350" alt="accessibility text">
+</p>
+Output of the Kayaccounter tflite model
+<p align="center">
+  <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
+</p>
 
 ## Preparing the dataset for the Kayakcounter
 
