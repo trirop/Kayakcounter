@@ -40,10 +40,11 @@ conda install libxml
 conda install jupyter
 conda install Pillow
 conda install contextlib
+conda install jupyter
 ```
 pip3 install -r requirements.txt 
 
-### Installion of the needed software requirements and prerequisites 
+### Setup and installation of the needed software requirements and prerequisites 
 For installing the needed software libraries please check
 [Medium](https://choosealicense.com/licenses/mit/)
 
@@ -59,6 +60,10 @@ For installing the needed software libraries please check
   <img src="/docs/Standuppaddler.jpg" width="350" alt="accessibility text">
 </p>
 
+<p align="center">
+  <img src="/docs/Kayak.png" width="350" alt="accessibility text">
+</p>
+
 ## Preparing the dataset for the Kayakcounter
 
 
@@ -70,7 +75,8 @@ For installing the needed software libraries please check
 [Images](https://drive.google.com/file/d/1zuxL50qTbJ0nLWU1Cfw0xsFmCli18ZQV/view?usp=sharing)  
 [Inference Graph](https://drive.google.com/file/d/1Ck2XczZKoKdqOwSpJ0Le021tEmZanATq/view?usp=sharing)  
 [Tflite sources](https://drive.google.com/file/d/1CmEBkx7-_xB0xn-ogYyWlho1nd735wmI/view?usp=sharing)  
- [Tflite file](https://drive.google.com/file/d/1SlUIGP3VpfPqffZj16xFp8Geq51kigWL/view?usp=sharing)  
+ [TFLite file](https://drive.google.com/file/d/1SlUIGP3VpfPqffZj16xFp8Geq51kigWL/view?usp=sharing)  
+[TFLite EdgeTPU file](https://drive.google.com/file/d/1-OyrvgU1-wiB69nfdOTbTzkhxGragJZO/view?usp=sharing)  
 [Introduction to TFLite on Raspberry Pi and Android](https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md)
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
