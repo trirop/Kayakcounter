@@ -48,6 +48,52 @@ pip3 install -r requirements.txt
 For installing the needed software libraries please check
 [Medium](https://choosealicense.com/licenses/mit/)  
 
+```
+Kayakcounter
+│   README.md
+│      
+│
+└───workspace
+│   │───training_demo
+│        │
+│        └───annotations
+│        │      │   file111.txt
+│        │      │   file112.txt
+│        │      
+         └───images
+                │   file111.txt
+         └───models
+				│   file111.txt
+         └───old_stuff
+				│   file111.txt
+         └───pre-trained-model
+				│   file111.txt
+         └───test_images
+				│   file111.txt
+         └───test_videos
+				│   file111.txt
+         └───tflite
+				│   file111.txt
+		 └───trained_inference_graph
+				│   file111.txt
+         └───training
+
+│   
+└───scripts
+    │   README.md
+	└───dataset_creating
+			│   file111.txt
+	└───exporting_model
+			│   file111.txt
+	└───preprocessing
+			│   file111.txt
+
+		
+
+
+```
+
+
 Output of the Kayacounter trained inference graph (frozen.pb):
 <p align="center">
   <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
@@ -91,5 +137,6 @@ Output of the Kayaccounter tflite model:
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 [BKV](https://www.kanu-bayern.de/)
+[Isar Videos](https://www.dropbox.com/sh/p8ex39se92zxzic/AACZPNh_7BOBeSNWbmUtFpzga?dl=0)
 
 
