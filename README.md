@@ -42,13 +42,27 @@ conda install Pillow
 conda install contextlib
 conda install jupyter
 ```
-pip3 install -r requirements.txt 
+```
+pip3 install -r requirements.txt
+```
 
 ### Setup and installation of the needed software requirements and prerequisites 
 For installing the needed software libraries please check
 [Medium](https://choosealicense.com/licenses/mit/) 
 ```
-From tensorflow/models/
+git clone https://github.com/tensorflow/models.git
+```
+
+```
+protoc object_detection/protos/*.proto --python_out=.
+os.environ['PYTHONPATH'] += ':/content/gdrive/My Drive/Kayakcounter/models/research/:/content/gdrive/My Drive/Kayakcounter/models/research/slim'
+```
+
+```
+!python model_builder_test.py
+```
+
+```
 python object_detection/builders/model_builder_test.py 
 ```
 
@@ -59,30 +73,31 @@ Kayakcounter
 │      
 │
 └───workspace
-│   │───training_demo
+│   └───training_demo
 │        │
 │        └───annotations
-│        │      │   file111.txt
-│        │      │   file112.txt
+│        │      │   train.record
+│        │      │   test.record
 │        │      
-         └───images
-                │   file111.txt
-         └───models
-				│   file111.txt
-         └───old_stuff
-				│   file111.txt
-         └───pre-trained-model
-				│   file111.txt
-         └───test_images
-				│   file111.txt
-         └───test_videos
-				│   file111.txt
-         └───tflite
-				│   file111.txt
-		 └───trained_inference_graph
-				│   file111.txt
-         └───training
-
+│        └───images
+│        │        └─all
+                  └─train
+                  └─test
+│        └───models
+│		 │	      └─(all Tensorflow models 
+│        
+│        └───pre-trained-model
+│		 │		│   ssd_mobilenet_v2_quantized_300x300
+│        └───test_images
+│		 │		│   (some test images)
+│        └───test_videos
+│		 │		│   (some test videos)
+│        └───tflite
+│		 │		│   (generated Tensorflow model in TFLite and EdgeTPU format)
+│		 └───trained_inference_graph
+│		 │		│   (generated frozen graph model)
+│        └───training
+│
 │   
 └───scripts
     │   README.md
@@ -130,6 +145,14 @@ Output of the Kayaccounter tflite model:
 5. Partition the images in train und test data (partition_datateser.sh)
 6. Create the csv_files (xml_to_csv_test.sh und xml_to_csv_train.sh).
 7. Create the tfrecords files with create_test_tfrecord.sh and create_train_tfrecord.sh  
+
+## Downloading a adaquate Tensorflow model for retraining the model
+I have this Tensorflow model and downloaded it from the GitHub Tensorflow model zoo. Extract this zipped Tar file under workspace/training_demo/pre-trained-model folder.
+
+```
+wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_quantized_300x300_coco_2019_01_03.tar.gz
+```
+
 
 
 ## Training the model
@@ -197,7 +220,3 @@ The result is wrtten down in a CSV file and contains such information:
 [Isar Videos](https://www.dropbox.com/sh/p8ex39se92zxzic/AACZPNh_7BOBeSNWbmUtFpzga?dl=0)
 
 
-
-| Header 1 | Header 2 |
-|----------|----------|
-|  Cell 1  |  Cell 2  |
