@@ -1,2 +1,0 @@
-#It will generate 2 files: tflite_graph.pb to be used below and tflite_graph.pbtxt
-tflite_convert --output_file=../../workspace/training_demo/tflite/Kayakcounter.tflite --graph_def_file=../../workspace/training_demo/tflite/tflite_graph.pb --input_arrays=normalized_input_image_tensor --output_arrays='TFLite_Detection_PostProcess','TFLite_Detection_PostProcess:1','TFLite_Detection_PostProcess:2','TFLite_Detection_PostProcess:3' --input_shape=1,300,300,3 --allow_custom_ops
