@@ -161,29 +161,6 @@ Kayakcounter
 
 ```
 
-
-Output of the Kayacounter trained inference graph (frozen.pb):
-<p align="center">
-  <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
-</p>
-
-<p align="center">
-  <img src="/docs/Rubberboat.jpg" width="350" alt="accessibility text">
-</p>
-
-<p align="center">
-  <img src="/docs/Standuppaddler.jpg" width="350" alt="accessibility text">
-</p>
-
-<p align="center">
-  <img src="/docs/Kayak.png" width="350" alt="accessibility text">
-</p>
-
-Output of the Kayaccounter tflite model:
-<p align="center">
-  <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
-</p>
-
 ## Preparing the dataset for the Kayakcounter
 
 1. Download all images into the folder workspace/training_demo/images/all 
@@ -249,7 +226,27 @@ The result is wrtten down in a CSV file and contains such information:
 |  2020-08-15_17:09:35| Rubberboat |0.94523983 |
 |  2020-08-15_17:09:37| Rubberboat |0.94400776 |
 
+Output of the Kayacounter trained inference graph (frozen.pb):
+<p align="center">
+  <img src="/docs/image_result.jpg" width="350" alt="accessibility text">
+</p>
 
+<p align="center">
+  <img src="/docs/Rubberboat.jpg" width="350" alt="accessibility text">
+</p>
+
+<p align="center">
+  <img src="/docs/Standuppaddler.jpg" width="350" alt="accessibility text">
+</p>
+
+<p align="center">
+  <img src="/docs/Kayak.png" width="350" alt="accessibility text">
+</p>
+
+Output of the Kayaccounter tflite model:
+<p align="center">
+  <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
+</p>
 
 ## Usage
 
