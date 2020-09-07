@@ -75,6 +75,7 @@ conda install Pillow
 conda install contextlib
 conda install jupyter
 ```
+or you can type this command
 ```
 pip3 install -r requirements.txt
 ```
@@ -107,10 +108,10 @@ Directory Structure for Training input data
 Kayakcounter
 │   README.md
 └─apps
-	└─Android
-    └─Desktop
-    └─iPhone
-    └─RaspberryPi
+│   └─Android
+│   └─Desktop
+│   └─iPhone
+│   └─RaspberryPi
 └─docs      
 │
 └───workspace
@@ -119,17 +120,17 @@ Kayakcounter
 │        └───annotations
 │        │      └─   train.record
 │        │      └─   test.record
-│                 └─   test_labels.csv
-│                 └─   train-label.csv
-│                 └─   object-detection.pbtx
+│        │      └─   test_labels.csv
+│        │      └─   train-label.csv
+│        │      └─   object-detection.pbtx
 │        │      
 │        └───images
 │        │        └─all
-│                   └─train
-│                   └─test
+│        │           └─train
+│        │           └─test
 │        └───models
-│		 	      └─(all Tensorflow models downloaded by Git)
-│        
+│		 │	      └─(all Tensorflow models downloaded by Git)
+│        │
 │        └───pre-trained-model
 │		 │		│   ssd_mobilenet_v2_quantized_300x300
 │        └───test_images
@@ -147,22 +148,22 @@ Kayakcounter
 └───scripts
 │     │   README.md
 │ 	  └───dataset_creating
-│ 			└─   Bingo
-│           └─  Google
-│           └─   Duckduckgo
+│ 	  │ 	└─ Bingo
+│     │     └─ Google
+│     │     └─ Duckduckgo
 │ 	  └───preprocessing
-│ 			└─enumerate_images
-│             └─images_preparation
-│             └─partition_datateser
-│             └─tfrecord_creation
-│             └─xmlcsv_preparation
-│ 
+│ 	  │		└─enumerate_images
+│     │        └─images_preparation
+│     │        └─partition_datateser
+│     │        └─tfrecord_creation
+│     │        └─xmlcsv_preparation
+│     │
 │ 	  └───testing
-│ 			└─local
-│                └─
-│                └─remote
+│ 	  │		└─local
+│     │     │      └─
+│     │     └─remote
 │     └───training
-│ 			└─   train_model_ssd_mobilenet_v1_quantized_300x300.sh
+│ 	  │	└─   train_model_ssd_mobilenet_v1_quantized_300x300.sh
 │ 	  └───transform_tflite
 │ 			└─convert_tflite_model_ssd_mobilenet_v2_quantized_300x300.sh
 │             └─create_frozen_graph_model_ssd_mobilenet_v2_quantized_300x300.sh
@@ -268,6 +269,11 @@ Output of the Kayacounter trained inference graph (frozen.pb):
 Output of the Kayaccounter tflite model:
 <p align="center">
   <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
+</p>
+
+RasberryPi with connected Webcam and EdgeTPU Coral USB
+p align="center">
+  <img src="/docs/RaspberryPI.jpg" width="350" alt="accessibility text">
 </p>
 
 Output of Kayakcounter in action by checking a video or webcam stream:
