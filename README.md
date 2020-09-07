@@ -106,21 +106,29 @@ python object_detection/builders/model_builder_test.py
 Directory Structure for Training input data
 Kayakcounter
 │   README.md
-│      
+└─apps
+	└─Android
+    └─Desktop
+    └─iPhone
+    └─RaspberryPi
+└─docs      
 │
 └───workspace
 │   └───training_demo
 │        │
 │        └───annotations
-│        │      │   train.record
-│        │      │   test.record
+│        │      └─   train.record
+│        │      └─   test.record
+│                 └─   test_labels.csv
+│                 └─   train-label.csv
+│                 └─   object-detection.pbtx
 │        │      
 │        └───images
 │        │        └─all
-                  └─train
-                  └─test
+│                   └─train
+│                   └─test
 │        └───models
-│		 │	      └─(all Tensorflow models downloaded by Git)
+│		 	      └─(all Tensorflow models downloaded by Git)
 │        
 │        └───pre-trained-model
 │		 │		│   ssd_mobilenet_v2_quantized_300x300
@@ -133,25 +141,39 @@ Kayakcounter
 │		 └───trained_inference_graph
 │		 │		│   (generated frozen graph model)
 │        └───training
-             	│   model.ckpt files etc.
+│              	│   model.ckpt files etc.
 │
 │   
 └───scripts
-    │   README.md
-	└───dataset_creating
-			│   Bingo
-            │   Google
-            │   Duckduckgo
-	└───preprocessing
-			│   file111.txt
-	└───testing
-			│   file111.txt
-    └───training
-			│   file111.txt
-	└───training
-			│   file111.txt
-	└───transform_tflite
-			│   file111.txt
+│     │   README.md
+│ 	  └───dataset_creating
+│ 			└─   Bingo
+│           └─  Google
+│           └─   Duckduckgo
+│ 	  └───preprocessing
+│ 			└─enumerate_images
+│             └─images_preparation
+│             └─partition_datateser
+│             └─tfrecord_creation
+│             └─xmlcsv_preparation
+│ 
+│ 	  └───testing
+│ 			└─local
+│                └─
+│                └─remote
+│     └───training
+│ 			└─   train_model_ssd_mobilenet_v1_quantized_300x300.sh
+│ 	  └───transform_tflite
+│ 			└─convert_tflite_model_ssd_mobilenet_v2_quantized_300x300.sh
+│             └─create_frozen_graph_model_ssd_mobilenet_v2_quantized_300x300.sh
+│             └─export_inference_graph.py
+              └─export_tflite_ssd_graph.py 
+│             └─export_tflite_model_ssd_mobilenet_v2_quantized_300x300.sh
+│             └─export_tflite_ssd_graph.py
+│             └─generate_edgetpu_tflite_model_ssd_mobilenet_v2_quantized_300x300
+ 	     	   	          
+            
+
 		
     
     
