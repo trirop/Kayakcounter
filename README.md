@@ -282,11 +282,11 @@ Output of Kayakcounter in action by checking a video or webcam stream:
 ## Usage
 
 ## Contributing und Downloading links
-[Images](https://drive.google.com/file/d/1zuxL50qTbJ0nLWU1Cfw0xsFmCli18ZQV/view?usp=sharing)  
-[Inference Graph](https://drive.google.com/file/d/1Ck2XczZKoKdqOwSpJ0Le021tEmZanATq/view?usp=sharing)  
-[Tflite sources](https://drive.google.com/file/d/1CmEBkx7-_xB0xn-ogYyWlho1nd735wmI/view?usp=sharing)  
- [TFLite file](https://drive.google.com/file/d/1SlUIGP3VpfPqffZj16xFp8Geq51kigWL/view?usp=sharing)  
-[TFLite EdgeTPU file](https://drive.google.com/file/d/1-OyrvgU1-wiB69nfdOTbTzkhxGragJZO/view?usp=sharing)  
+[Images](https://drive.google.com/file/d/1zcHbuTkN1mDN6LdwlavFvJkYF0LuSaMb/view?usp=sharing)  
+[Inference Graph](https://drive.google.com/file/d/1uL3y0BjquZijjrRvCQBOmJ0qYFiCb9e1/view?usp=sharing)  
+[Tflite sources](https://drive.google.com/file/d/1uQpxj-1ZDH1Rjyo3HrRvkFeGlqOw2iAv/view?usp=sharing)  
+ [TFLite file](https://drive.google.com/file/d/1BF_mt8kpQIs9RyBwRcOflVESzXoxPCI2/view?usp=sharing)  
+[TFLite EdgeTPU file](https://drive.google.com/file/d/1Y3TvKXoYuEvbvJMpdZfAjHETPquJcY9N/view?usp=sharing)  
 [Introduction to TFLite on Raspberry Pi and Android](https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md)
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
