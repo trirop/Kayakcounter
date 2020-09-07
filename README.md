@@ -15,9 +15,42 @@ The neuronal net of the Kayakcounter can distiguish three types of boates:
 2. Rubber boat
 3. Standup paddler
 
-## Setting-up a working Python environment
+## Setting-up a working Python environment 
 Download and install Anaconda (Python 3.7 for Linux Ubuntu 18.04 in my case) from:
 [Anaconda](https://www.anaconda.com/distribution/)
+
+For checking the version and correct installation of Anaconda you have to type this in a shell.
+```
+conda info
+```
+The expectedd output should contain such information.
+```
+active environment : Kayakcounter
+    active env location : /home/tristan/anaconda3/envs/Kayakcounter
+            shell level : 2
+       user config file : /home/tristan/.condarc
+ populated config files : /home/tristan/.condarc
+          conda version : 4.8.4
+    conda-build version : 3.18.11
+         python version : 3.7.6.final.0
+       virtual packages : __glibc=2.27
+       base environment : /home/tristan/anaconda3  (writable)
+           channel URLs : https://conda.anaconda.org/conda-forge/linux-64
+                          https://conda.anaconda.org/conda-forge/noarch
+                          https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/tristan/anaconda3/pkgs
+                          /home/tristan/.conda/pkgs
+       envs directories : /home/tristan/anaconda3/envs
+                          /home/tristan/.conda/envs
+               platform : linux-64
+             user-agent : conda/4.8.4 requests/2.24.0 CPython/3.7.6 Linux/5.4.0-46-generic ubuntu/18.04.5 glibc/2.27
+                UID:GID : 1000:1000
+                netrc file : None
+                offline mode : False
+```
 
 After this setup do this:  
 Create a virtual environment for a special user, for instance user Kayakcounter
@@ -48,12 +81,15 @@ pip3 install -r requirements.txt
 
 ### Setup and installation of the needed software requirements and prerequisites 
 For installing the needed software libraries please check
-[Medium](https://choosealicense.com/licenses/mit/) 
+[Medium](https://choosealicense.com/licenses/mit/), too.
+
+Go to the folder Kayakcounter/workspace/training_demo and run this command.
 ```
 git clone https://github.com/tensorflow/models.git
 ```
 
 ```
+
 protoc object_detection/protos/*.proto --python_out=.
 os.environ['PYTHONPATH'] += ':/content/gdrive/My Drive/Kayakcounter/models/research/:/content/gdrive/My Drive/Kayakcounter/models/research/slim'
 ```
@@ -84,7 +120,7 @@ Kayakcounter
                   └─train
                   └─test
 │        └───models
-│		 │	      └─(all Tensorflow models 
+│		 │	      └─(all Tensorflow models downloaded by Git)
 │        
 │        └───pre-trained-model
 │		 │		│   ssd_mobilenet_v2_quantized_300x300
@@ -97,16 +133,28 @@ Kayakcounter
 │		 └───trained_inference_graph
 │		 │		│   (generated frozen graph model)
 │        └───training
+             	│   model.ckpt files etc.
 │
 │   
 └───scripts
     │   README.md
 	└───dataset_creating
-			│   file111.txt
-	└───exporting_model
-			│   file111.txt
+			│   Bingo
+            │   Google
+            │   Duckduckgo
 	└───preprocessing
 			│   file111.txt
+	└───testing
+			│   file111.txt
+    └───training
+			│   file111.txt
+	└───training
+			│   file111.txt
+	└───transform_tflite
+			│   file111.txt
+		
+    
+    
 
 		
 
@@ -202,8 +250,6 @@ The result is wrtten down in a CSV file and contains such information:
 |  2020-08-15_17:09:37| Rubberboat |0.94400776 |
 
 
-
-[Scripts for testing](/scripts/testing/Readme.md)
 
 ## Usage
 
