@@ -248,6 +248,8 @@ Output of the Kayaccounter tflite model:
   <img src="/docs/Kayakcounter_tflite.png" width="350" alt="accessibility text">
 </p>
 
+Output of Kayakcounter in action by checking a video or webcam stream:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LjMZ1Xcuw3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ## Usage
 
 ## Contributing und Downloading links
