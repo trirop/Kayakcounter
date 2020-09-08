@@ -80,10 +80,10 @@ or you can type this command
 pip3 install -r requirements.txt
 ```
 
-Under /Kayakcounter/scripts/testing/local yo can find the Python script check_version.py for checking all needed Python packages.
+Under Kayakcounter/scripts/testing/local you can find the Python script check_version.py for checking all needed Python packages.
 ```
 python check_versions.py
-/home/tristan/anaconda3/envs/Opencv/bin/python
+/home/tristan/anaconda3/envs/Kayakcounter/bin/python
 3.7.8 | packaged by conda-forge | (default, Jul 31 2020, 02:25:08) 
 [GCC 7.5.0]
 sys.version_info(major=3, minor=7, micro=8, releaselevel='final', serial=0)
