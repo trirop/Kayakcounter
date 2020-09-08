@@ -72,8 +72,9 @@ conda install Cython
 conda install libxml
 conda install pycocotools
 conda install Pillow
-conda install contextlib
+conda install contextlib2
 conda install jupyter
+pip install python-tk
 ```
 or you can type this command
 ```
@@ -107,10 +108,28 @@ git clone https://github.com/tensorflow/models.git
 ```
 
 ```
+# Get protoc 3.0.0, rather than the old version already in the container
+! wget https://www.github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip
+! unzip protoc-3.0.0-linux-x86_64.zip -d proto3
+! mkdir -p local/bin && mkdir -p local/include
+! mv proto3/bin/* local/bin
+! mv proto3/include/* local/include
+! rm -rf proto3 protoc-3.0.0-linux-x86_64.zip
+```
 
+```
 protoc object_detection/protos/*.proto --python_out=.
 os.environ['PYTHONPATH'] += ':/content/gdrive/My Drive/Kayakcounter/models/research/:/content/gdrive/My Drive/Kayakcounter/models/research/slim'
 ```
+
+```
+# Install pycocoapi
+! git clone --depth 1 https://github.com/cocodataset/cocoapi.git
+! (cd cocoapi/PythonAPI && make -j8)
+! cp -r cocoapi/PythonAPI/pycocotools/ models/research/
+! rm -rf cocoapi
+```
+
 
 ```
 !python model_builder_test.py
