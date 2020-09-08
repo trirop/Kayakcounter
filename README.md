@@ -326,7 +326,7 @@ Output of Kayakcounter in action by checking a video or webcam stream:
 
 ## Usage
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1o_aWpUgssmNTUIj56FEhQW_lj3sfq1YI#scrollTo=BMgiHn4gbve2)
 
 ## Contributing und Downloading links
 [Images](https://drive.google.com/file/d/1zcHbuTkN1mDN6LdwlavFvJkYF0LuSaMb/view?usp=sharing)  
