@@ -130,6 +130,15 @@ os.environ['PYTHONPATH'] += ':/content/gdrive/My Drive/Kayakcounter/models/resea
 ! rm -rf cocoapi
 ```
 
+```
+protoc object_detection/protos/*.proto --python_out=
+
+```
+
+```
+PYTHONPATH'] += ":/content/models/research:/content/models/research/slim"
+```
+
 
 ```
 !python model_builder_test.py
@@ -316,6 +325,8 @@ Output of Kayakcounter in action by checking a video or webcam stream:
 [![Watch the Kayakcounter](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/embed/LjMZ1Xcuw3Q)
 
 ## Usage
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb)
 
 ## Contributing und Downloading links
 [Images](https://drive.google.com/file/d/1zcHbuTkN1mDN6LdwlavFvJkYF0LuSaMb/view?usp=sharing)  
