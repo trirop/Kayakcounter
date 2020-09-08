@@ -80,6 +80,23 @@ or you can type this command
 pip3 install -r requirements.txt
 ```
 
+Under /Kayakcounter/scripts/testing/local yo can find the Python script check_version.py for checking all needed Python packages.
+```
+python check_versions.py
+/home/tristan/anaconda3/envs/Opencv/bin/python
+3.7.8 | packaged by conda-forge | (default, Jul 31 2020, 02:25:08) 
+[GCC 7.5.0]
+sys.version_info(major=3, minor=7, micro=8, releaselevel='final', serial=0)
+Version of OpenCV = 4.4.0
+Version of Tensorflow = 1.15.0
+Version of Numpy = 1.19.1
+Version of Matplotlib = 3.3.0
+Version of Python = 3.7.8
+Version of PIL = 7.2.0
+Version of Cython = 0.29.21
+Version of XML = 4.5.2
+Name of the author of pycocotools= tsungyi
+```
 ### Setup and installation of the needed software requirements and prerequisites 
 For installing the needed software libraries please check
 [Medium](https://choosealicense.com/licenses/mit/), too.
