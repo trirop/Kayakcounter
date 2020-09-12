@@ -1,1 +1,1 @@
-python3 webcam1.py --modeldir=TFLite_model
+.qpython3 Kayakcounter.py --modeldir=TFLite_model

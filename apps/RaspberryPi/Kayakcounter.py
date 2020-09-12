@@ -142,6 +142,7 @@ while True:
     num = interpreter.get_tensor(output_details[3]['index'])[0]
 
     print("Total amount of detected obejcts=",num)
+
     for i in range(len(scores)):
         if ((scores[i] > min_conf_threshold) and (scores[i] <= 1.0)):
             ymin = int(max(1,(boxes[i][0] * imH)))
