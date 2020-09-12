@@ -61,10 +61,11 @@ def get_output(interpreter, score_threshold, top_k, image_scale=1.0):
 
     return [make(i) for i in range(top_k) if scores[i] >= score_threshold]
 
+@Gooey
 def main():
-    default_model_dir = '../all_models'
-    default_model = 'detect.tflite'
-    default_labels = 'labels.txt'
+    default_model_dir = '../../workspace/training_demo/tflite/'
+    default_model = 'Kayakcounter_quant_edgetpu.tflite'
+    default_labels = 'object-detection.txt'
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', help='.tflite model path',
                         default=os.path.join(default_model_dir,default_model))
@@ -73,7 +74,7 @@ def main():
     parser.add_argument('--top_k', type=int, default=3,
                         help='number of categories with highest score to display')
     parser.add_argument('--camera_idx', type=int, help='Index of which video source to use. ', default = 0)
-    parser.add_argument('--threshold', type=float, default=0.1,
+    parser.add_argument('--threshold', type=float, default=0.95,
                         help='classifier score threshold')
     args = parser.parse_args()
 
